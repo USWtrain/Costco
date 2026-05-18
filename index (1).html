@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Costco Screening Training Manual | Onsite Wellness</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0d2340;
+  --navy-mid: #1b3a6b;
+  --navy-light: #2a5298;
+  --red: #c0392b;
+  --red-light: #e74c3c;
+  --gold: #f39c12;
+  --teal: #0f6e56;
+  --teal-light: #1abc9c;
+  --ice: #e8f4fd;
+  --ice-mid: #d1e8f5;
+  --cream: #fafaf8;
+  --gray-100: #f4f4f2;
+  --gray-200: #e8e8e4;
+  --gray-400: #9e9e96;
+  --gray-600: #5f5f58;
+  --gray-800: #2c2c28;
+  --success-bg: #e8f5e9;
+  --success-text: #2e7d32;
+  --warn-bg: #fff8e1;
+  --warn-text: #e65100;
+  --danger-bg: #ffebee;
+  --danger-text: #b71c1c;
+  --info-bg: #e3f2fd;
+  --info-text: #0d47a1;
+  --sidebar-w: 270px;
+  --header-h: 64px;
+  --font: 'DM Sans', system-ui, sans-serif;
+  --mono: 'DM Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--cream);
+  color: var(--gray-800);
+  font-size: 15px;
+  line-height: 1.65;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.top-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: var(--header-h);
+  background: var(--navy);
+  display: flex; align-items: center; gap: 16px;
+  padding: 0 20px;
+  border-bottom: 3px solid var(--red);
+}
+.top-bar .brand {
+  display: flex; align-items: center; gap: 10px;
+  color: #fff; font-size: 14px; font-weight: 500; letter-spacing: 0.02em;
+}
+.brand-badge {
+  background: var(--red); color: #fff; font-size: 11px; font-weight: 600;
+  padding: 3px 8px; border-radius: 4px; letter-spacing: 0.05em; text-transform: uppercase;
+}
+.top-bar .progress-bar-wrap {
+  flex: 1; max-width: 320px; margin-left: auto;
+  display: flex; align-items: center; gap: 10px;
+}
+.progress-label { color: #8fa8c8; font-size: 12px; white-space: nowrap; }
+.prog-track { flex: 1; height: 4px; background: rgba(255,255,255,0.15); border-radius: 2px; overflow: hidden; }
+.prog-fill { height: 100%; background: var(--teal-light); border-radius: 2px; transition: width 0.4s ease; width: 0%; }
+.menu-btn {
+  background: none; border: none; cursor: pointer; color: #8fa8c8;
+  font-size: 22px; display: none; margin-left: 8px;
+  padding: 4px 6px;
+}
+.menu-btn:hover { color: #fff; }
+
+/* ── LAYOUT ── */
+.layout { display: flex; padding-top: var(--header-h); min-height: 100vh; }
+
+/* ── SIDEBAR ── */
+.sidebar {
+  position: fixed; top: var(--header-h); left: 0; bottom: 0;
+  width: var(--sidebar-w); overflow-y: auto;
+  background: var(--navy);
+  padding: 24px 0 40px;
+  z-index: 150;
+  transition: transform 0.3s ease;
+}
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+.sidebar-section-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+  color: #5a7a9e; padding: 16px 22px 6px; text-transform: uppercase;
+}
+.nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 22px; cursor: pointer;
+  color: #8fa8c8; font-size: 13px; font-weight: 400;
+  border-left: 3px solid transparent;
+  transition: all 0.15s;
+  text-decoration: none;
+}
+.nav-item:hover { color: #fff; background: rgba(255,255,255,0.05); }
+.nav-item.active { color: #fff; border-left-color: var(--red); background: rgba(255,255,255,0.06); font-weight: 500; }
+.nav-item.done .nav-check { color: var(--teal-light); }
+.nav-num {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: rgba(255,255,255,0.08); color: #8fa8c8;
+  font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.nav-item.active .nav-num { background: var(--red); color: #fff; }
+.nav-item.done .nav-num { background: var(--teal); color: #fff; }
+.nav-check { font-size: 13px; margin-left: auto; opacity: 0; transition: opacity 0.2s; }
+.nav-item.done .nav-check { opacity: 1; }
+
+.sidebar-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 12px 22px; }
+.sidebar-callout {
+  margin: 16px 14px; background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px 14px;
+}
+.sidebar-callout .sc-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red-light); font-weight: 600; margin-bottom: 4px; }
+.sidebar-callout .sc-num { font-size: 18px; font-weight: 600; color: #fff; font-family: var(--mono); }
+.sidebar-callout .sc-note { font-size: 11px; color: #6a8aaa; margin-top: 3px; }
+
+/* ── MAIN ── */
+.main {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  max-width: 860px;
+  padding: 40px 48px 80px;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  border-radius: 14px;
+  padding: 48px 44px;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+  background: repeating-linear-gradient(
+    -45deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px,
+    transparent 1px, transparent 24px
+  );
+}
+.hero-tag {
+  display: inline-block; background: var(--red); color: #fff;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 4px; margin-bottom: 14px;
+}
+.hero h1 { font-size: 30px; font-weight: 600; color: #fff; line-height: 1.2; margin-bottom: 10px; position: relative; }
+.hero p { color: #7fa2cc; font-size: 15px; max-width: 520px; position: relative; }
+.hero-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; position: relative;
+}
+.hero-stat {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px; padding: 14px 16px;
+}
+.hs-num { font-size: 22px; font-weight: 600; color: #fff; font-family: var(--mono); }
+.hs-label { font-size: 11px; color: #6a8aaa; margin-top: 2px; }
+
+/* ── SECTION MODULES ── */
+.module { display: none; }
+.module.active { display: block; }
+
+.section-header {
+  display: flex; align-items: flex-start; gap: 16px; margin-bottom: 28px;
+}
+.section-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: var(--navy); display: flex; align-items: center; justify-content: center;
+  font-size: 22px; flex-shrink: 0; color: #fff;
+}
+.section-num { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--red); text-transform: uppercase; margin-bottom: 3px; }
+.section-title { font-size: 22px; font-weight: 600; color: var(--navy); line-height: 1.2; }
+.section-sub { font-size: 14px; color: var(--gray-600); margin-top: 4px; }
+
+h2.sub-heading {
+  font-size: 16px; font-weight: 600; color: var(--navy);
+  margin: 32px 0 12px;
+  padding-bottom: 8px; border-bottom: 2px solid var(--ice-mid);
+}
+h3.mini-heading {
+  font-size: 14px; font-weight: 600; color: var(--gray-600);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  margin: 24px 0 10px;
+}
+p { margin-bottom: 12px; color: var(--gray-800); }
+
+/* ── CALLOUT BOXES ── */
+.callout {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 14px 18px; border-radius: 10px; margin: 18px 0; font-size: 14px;
+}
+.callout.critical { background: var(--danger-bg); border-left: 4px solid var(--red); }
+.callout.warn { background: var(--warn-bg); border-left: 4px solid var(--gold); }
+.callout.info { background: var(--info-bg); border-left: 4px solid var(--navy-light); }
+.callout.success { background: var(--success-bg); border-left: 4px solid var(--teal); }
+.callout-icon { font-size: 18px; margin-top: 1px; flex-shrink: 0; }
+.callout.critical .callout-icon { color: var(--red); }
+.callout.warn .callout-icon { color: var(--gold); }
+.callout.info .callout-icon { color: var(--navy-light); }
+.callout.success .callout-icon { color: var(--teal); }
+.callout-body strong { display: block; font-weight: 600; margin-bottom: 4px; }
+
+/* ── STEP LIST ── */
+.step-list { list-style: none; margin: 14px 0; }
+.step-item {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 14px 16px; border-radius: 10px; margin-bottom: 8px;
+  background: #fff; border: 1px solid var(--gray-200);
+  transition: border-color 0.15s;
+}
+.step-item:hover { border-color: var(--navy-light); }
+.step-num {
+  width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+  background: var(--navy); color: #fff;
+  font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono);
+}
+.step-content { flex: 1; }
+.step-content strong { font-weight: 500; color: var(--gray-800); font-size: 14px; }
+.step-note { font-size: 12px; color: var(--gray-400); margin-top: 4px; font-style: italic; }
+.step-alert { font-size: 12px; color: var(--red); font-weight: 600; margin-top: 4px; }
+
+/* ── BULLET LIST ── */
+.bullet-list { list-style: none; margin: 10px 0 16px; }
+.bullet-list li {
+  padding: 6px 0 6px 20px; position: relative; font-size: 14px; color: var(--gray-800);
+  border-bottom: 1px solid var(--gray-100);
+}
+.bullet-list li::before {
+  content: ''; position: absolute; left: 0; top: 14px;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--navy-mid);
+}
+.bullet-list li:last-child { border-bottom: none; }
+
+/* ── TABLES ── */
+.data-table {
+  width: 100%; border-collapse: collapse; font-size: 13.5px;
+  margin: 14px 0; border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--gray-200);
+}
+.data-table th {
+  background: var(--navy); color: #fff; text-align: left;
+  padding: 10px 14px; font-weight: 500; font-size: 12px; letter-spacing: 0.04em;
+}
+.data-table td { padding: 9px 14px; border-bottom: 1px solid var(--gray-100); color: var(--gray-800); }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:nth-child(even) td { background: var(--gray-100); }
+.data-table td.red { color: var(--red); font-weight: 600; }
+.data-table td.teal { color: var(--teal); font-weight: 600; }
+.data-table td.gold { color: #b7770d; font-weight: 600; }
+
+/* ── RANGE CARD ── */
+.range-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+.range-card {
+  border-radius: 12px; padding: 16px; text-align: center; border: 2px solid transparent;
+}
+.range-card.normal { background: var(--success-bg); border-color: #a5d6a7; }
+.range-card.pre { background: var(--warn-bg); border-color: #ffe082; }
+.range-card.diabetes { background: var(--danger-bg); border-color: #ef9a9a; }
+.rc-value { font-size: 20px; font-weight: 700; font-family: var(--mono); margin-bottom: 4px; }
+.range-card.normal .rc-value { color: var(--success-text); }
+.range-card.pre .rc-value { color: var(--warn-text); }
+.range-card.diabetes .rc-value { color: var(--danger-text); }
+.rc-label { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 6px; }
+.range-card.normal .rc-label { color: var(--success-text); }
+.range-card.pre .rc-label { color: var(--warn-text); }
+.range-card.diabetes .rc-label { color: var(--danger-text); }
+.rc-action { font-size: 12px; color: var(--gray-600); }
+
+/* ── SERVICE GRID ── */
+.service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0; }
+.service-card {
+  background: #fff; border: 1px solid var(--gray-200);
+  border-radius: 10px; padding: 14px 16px;
+  display: flex; align-items: flex-start; gap: 12px;
+}
+.service-card:hover { border-color: var(--navy-mid); }
+.sc-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: var(--ice); display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0; color: var(--navy-mid);
+}
+.sc-name { font-size: 13px; font-weight: 600; color: var(--navy); }
+.sc-desc { font-size: 12px; color: var(--gray-600); margin-top: 2px; }
+
+/* ── CONTACT CALLOUT ── */
+.contact-strip {
+  background: var(--navy); border-radius: 12px; padding: 18px 22px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  margin: 20px 0;
+}
+.cs-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6a8aaa; margin-bottom: 4px; }
+.cs-num { font-size: 22px; font-weight: 700; color: #fff; font-family: var(--mono); letter-spacing: 0.05em; }
+.cs-desc { font-size: 12px; color: #6a8aaa; margin-top: 2px; }
+.cs-badge {
+  background: var(--red); color: #fff; font-size: 11px; font-weight: 700;
+  padding: 4px 10px; border-radius: 6px; letter-spacing: 0.06em; white-space: nowrap;
+}
+
+/* ── QUIZ ── */
+.quiz-section {
+  margin-top: 40px; padding: 28px; border-radius: 14px;
+  background: var(--navy); border: 1px solid rgba(255,255,255,0.1);
+}
+.quiz-header {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px;
+}
+.quiz-title { font-size: 15px; font-weight: 600; color: #fff; }
+.quiz-badge { font-size: 11px; color: #6a8aaa; background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 20px; }
+.question-block { margin-bottom: 20px; }
+.q-text { font-size: 14px; color: #c8d8eb; margin-bottom: 12px; font-weight: 500; }
+.options { display: flex; flex-direction: column; gap: 8px; }
+.option-btn {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 10px 14px; cursor: pointer;
+  text-align: left; width: 100%; font-family: var(--font); font-size: 13px; color: #8fa8c8;
+  transition: all 0.15s;
+}
+.option-btn:hover:not(:disabled) { background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.25); }
+.option-btn.correct { background: rgba(26,188,156,0.15); border-color: #1abc9c; color: #fff; }
+.option-btn.wrong { background: rgba(192,57,43,0.2); border-color: var(--red-light); color: #fff; }
+.option-btn:disabled { cursor: default; }
+.opt-letter {
+  width: 22px; height: 22px; border-radius: 4px;
+  background: rgba(255,255,255,0.08); color: #6a8aaa;
+  font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.option-btn.correct .opt-letter { background: #1abc9c; color: #fff; }
+.option-btn.wrong .opt-letter { background: var(--red); color: #fff; }
+.quiz-result {
+  margin-top: 18px; padding: 14px 18px; border-radius: 10px; text-align: center;
+  font-size: 14px; font-weight: 500; display: none;
+}
+.quiz-result.pass { background: rgba(26,188,156,0.15); color: #1abc9c; border: 1px solid rgba(26,188,156,0.3); }
+.quiz-result.fail { background: rgba(192,57,43,0.15); color: #e57373; border: 1px solid rgba(192,57,43,0.3); }
+.quiz-actions {
+  display: flex; gap: 10px; margin-top: 14px; justify-content: center;
+}
+.q-btn {
+  padding: 9px 20px; border-radius: 8px; font-family: var(--font);
+  font-size: 13px; font-weight: 500; cursor: pointer; border: 1px solid;
+  transition: all 0.15s;
+}
+.q-btn.primary { background: #fff; color: var(--navy); border-color: #fff; }
+.q-btn.primary:hover { background: var(--ice); }
+.q-btn.ghost { background: transparent; color: #8fa8c8; border-color: rgba(255,255,255,0.2); }
+.q-btn.ghost:hover { background: rgba(255,255,255,0.06); color: #fff; }
+
+/* ── NAME MODAL ── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(7,18,35,0.82);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal-box {
+  background: var(--navy); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px; padding: 40px 36px; max-width: 420px; width: 100%;
+  transform: translateY(20px); transition: transform 0.3s;
+}
+.modal-overlay.open .modal-box { transform: translateY(0); }
+.modal-icon { font-size: 36px; margin-bottom: 16px; }
+.modal-title { font-size: 20px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+.modal-sub { font-size: 14px; color: #7fa2cc; margin-bottom: 24px; line-height: 1.6; }
+.modal-input {
+  width: 100%; padding: 12px 16px; border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.06);
+  color: #fff; font-family: var(--font); font-size: 15px; outline: none;
+  transition: border-color 0.2s; margin-bottom: 16px;
+}
+.modal-input::placeholder { color: #4a6a8a; }
+.modal-input:focus { border-color: var(--teal-light); }
+.modal-submit {
+  width: 100%; padding: 13px; border-radius: 10px;
+  background: var(--teal); border: none; color: #fff;
+  font-family: var(--font); font-size: 15px; font-weight: 600;
+  cursor: pointer; transition: background 0.15s;
+}
+.modal-submit:hover { background: var(--teal-light); }
+.modal-submit:disabled { opacity: 0.4; cursor: default; }
+
+/* ── CERTIFICATE ── */
+.cert-overlay {
+  position: fixed; inset: 0; z-index: 400;
+  background: rgba(7,18,35,0.88);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  opacity: 0; pointer-events: none; transition: opacity 0.35s;
+}
+.cert-overlay.open { opacity: 1; pointer-events: all; }
+.cert-wrapper {
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+  transform: scale(0.92); transition: transform 0.35s;
+  max-width: 700px; width: 100%;
+}
+.cert-overlay.open .cert-wrapper { transform: scale(1); }
+.cert-canvas-wrap {
+  width: 100%; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+}
+.cert-canvas-wrap canvas { display: block; width: 100%; height: auto; }
+.cert-actions { display: flex; gap: 12px; }
+.cert-btn {
+  padding: 11px 24px; border-radius: 10px; font-family: var(--font);
+  font-size: 14px; font-weight: 600; cursor: pointer; border: 1px solid;
+  transition: all 0.15s;
+}
+.cert-btn.primary { background: #fff; color: var(--navy); border-color: #fff; }
+.cert-btn.primary:hover { background: var(--ice); }
+.cert-btn.ghost { background: transparent; color: #8fa8c8; border-color: rgba(255,255,255,0.25); }
+.cert-btn.ghost:hover { background: rgba(255,255,255,0.07); color: #fff; }
+
+.q-status-dot {
+  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  background: rgba(255,255,255,0.15); display: inline-block;
+  transition: background 0.3s;
+}
+.q-status-dot.correct { background: var(--teal-light); }
+.q-status-dot.wrong { background: var(--red-light); }
+
+.q-feedback {
+  font-size: 12px; margin-top: 8px; padding: 8px 12px;
+  border-radius: 8px; display: none;
+}
+.q-feedback.wrong {
+  display: block; background: rgba(192,57,43,0.15);
+  border-left: 3px solid var(--red-light); color: #e87068;
+}
+.q-feedback.correct {
+  display: block; background: rgba(26,188,156,0.12);
+  border-left: 3px solid var(--teal-light); color: var(--teal-light);
+}
+
+.option-btn.locked-correct { 
+  background: rgba(26,188,156,0.15); border-color: var(--teal-light); 
+  color: #fff; cursor: default;
+}
+.option-btn.locked-correct .opt-letter { background: var(--teal-light); color: #fff; }
+
+/* pip dots in overall tracker */
+.q-pip {
+  width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0;
+  background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.15);
+  transition: all 0.3s; display: flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 700; color: transparent;
+}
+.q-pip.correct { background: var(--teal-light); border-color: var(--teal-light); color: #fff; }
+.q-pip.wrong { background: rgba(192,57,43,0.3); border-color: var(--red-light); }
+
+/* ── NAV FOOTER ── */
+.module-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--gray-200);
+}
+.mn-btn {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 20px; border-radius: 8px; border: 1px solid var(--gray-200);
+  background: #fff; color: var(--navy); font-family: var(--font);
+  font-size: 13px; font-weight: 500; cursor: pointer; text-decoration: none;
+  transition: all 0.15s;
+}
+.mn-btn:hover { border-color: var(--navy); background: var(--ice); }
+.mn-btn.primary { background: var(--navy); color: #fff; border-color: var(--navy); }
+.mn-btn.primary:hover { background: var(--navy-mid); }
+.mn-btn:disabled { opacity: 0.4; cursor: default; pointer-events: none; }
+
+/* ── QUICK REF GRID ── */
+.qr-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 16px 0; }
+.qr-card {
+  background: #fff; border: 1px solid var(--gray-200); border-radius: 10px; padding: 16px;
+}
+.qr-card.danger { border-left: 4px solid var(--red); }
+.qr-card.info { border-left: 4px solid var(--navy-mid); }
+.qr-card.success { border-left: 4px solid var(--teal); }
+.qr-card.warn { border-left: 4px solid var(--gold); }
+.qr-card-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+.qr-card.danger .qr-card-title { color: var(--red); }
+.qr-card.info .qr-card-title { color: var(--navy-mid); }
+.qr-card.success .qr-card-title { color: var(--teal); }
+.qr-card.warn .qr-card-title { color: #b7770d; }
+.qr-card ul { list-style: none; }
+.qr-card ul li { font-size: 13px; color: var(--gray-800); padding: 3px 0; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  :root { --sidebar-w: 0px; }
+  .sidebar { transform: translateX(-270px); width: 270px; }
+  .sidebar.open { transform: translateX(0); }
+  .main { margin-left: 0; padding: 28px 20px 60px; }
+  .menu-btn { display: block; }
+  .hero { padding: 32px 24px; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .range-grid { grid-template-columns: 1fr; }
+  .service-grid { grid-template-columns: 1fr; }
+  .qr-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="top-bar">
+  <button class="menu-btn" onclick="toggleSidebar()" aria-label="Toggle menu">☰</button>
+  <div class="brand">
+    <span class="brand-badge">Onsite Wellness</span>
+    <span>Costco Screening Training</span>
+  </div>
+  <div class="progress-bar-wrap">
+    <span class="progress-label" id="prog-label">0 of 5 complete</span>
+    <div class="prog-track"><div class="prog-fill" id="prog-fill"></div></div>
+  </div>
+</header>
+
+<div class="layout">
+
+<!-- SIDEBAR -->
+<nav class="sidebar" id="sidebar" aria-label="Training modules">
+  <div class="sidebar-section-label">Navigation</div>
+  <a class="nav-item active" onclick="showModule(0)" href="#">
+    <div class="nav-num">🏠</div>
+    <span>Quick Reference</span>
+    <span class="nav-check">✓</span>
+  </a>
+
+  <div class="sidebar-section-label">Modules</div>
+  <a class="nav-item" id="nav-1" onclick="showModule(1)" href="#">
+    <div class="nav-num">1</div>
+    <span>Program Overview</span>
+    <span class="nav-check">✓</span>
+  </a>
+  <a class="nav-item" id="nav-2" onclick="showModule(2)" href="#">
+    <div class="nav-num">2</div>
+    <span>A1c Testing — SOP</span>
+    <span class="nav-check">✓</span>
+  </a>
+  <a class="nav-item" id="nav-3" onclick="showModule(3)" href="#">
+    <div class="nav-num">3</div>
+    <span>Results &amp; Counseling</span>
+    <span class="nav-check">✓</span>
+  </a>
+  <a class="nav-item" id="nav-4" onclick="showModule(4)" href="#">
+    <div class="nav-num">4</div>
+    <span>Paperwork &amp; Return</span>
+    <span class="nav-check">✓</span>
+  </a>
+  <a class="nav-item" id="nav-5" onclick="showModule(5)" href="#">
+    <div class="nav-num">5</div>
+    <span>Knowledge Checks</span>
+    <span class="nav-check">✓</span>
+  </a>
+
+  <div class="sidebar-divider"></div>
+  <div class="sidebar-callout">
+    <div class="sc-label">On-Call Support</div>
+    <div class="sc-num">866.881.7607</div>
+    <div class="sc-note">Step to a private area first</div>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main class="main" id="main-content">
+
+<!-- ═══════════════════════════════════════════════════
+     MODULE 0 — QUICK REFERENCE / HOME
+════════════════════════════════════════════════════ -->
+<div class="module active" id="mod-0">
+
+  <div class="hero">
+    <div class="hero-tag">Required Training · US Wellness / Onsite Wellness</div>
+    <h1>Costco Employee Health Screening</h1>
+    <p>Required training for US Wellness/Onsite Wellness staff working Costco Employee Wellness events. Complete each self-guided module and each knowledge check (quizzes following each module).</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hs-num">450+</div><div class="hs-label">Warehouse locations</div></div>
+      <div class="hero-stat"><div class="hs-num">6</div><div class="hs-label">Screenings per participant</div></div>
+      <div class="hero-stat"><div class="hs-num">5 min</div><div class="hs-label">A1c result time</div></div>
+    </div>
+  </div>
+
+  <h2 class="sub-heading">Critical rules at a glance</h2>
+  <div class="qr-grid">
+    <div class="qr-card danger">
+      <div class="qr-card-title">Identity</div>
+      <ul><li>You are <strong>Onsite Wellness</strong> — never say "US Wellness" to participants</li><li>All forms/signage branded as Onsite Wellness</li></ul>
+    </div>
+    <div class="qr-card danger">
+      <div class="qr-card-title">Never leave early</div>
+      <ul><li>Remain set up until scheduled end time</li><li>Call 866.881.7607 for permission to leave early</li></ul>
+    </div>
+    <div class="qr-card warn">
+      <div class="qr-card-title">A1c — if QCOK missing</div>
+      <ul><li>Do NOT report the result</li><li>Call 866.881.7607 immediately</li></ul>
+    </div>
+    <div class="qr-card warn">
+      <div class="qr-card-title">Tablet failure</div>
+      <ul><li>Call 866.881.7607 before switching to paper</li><li>Shift Lead must authorize</li></ul>
+    </div>
+    <div class="qr-card info">
+      <div class="qr-card-title">Height &amp; Weight</div>
+      <ul><li>Self-reported by participant</li><li>No scale or stadiometer sent in shipments</li></ul>
+    </div>
+    <div class="qr-card success">
+      <div class="qr-card-title">Elevated A1c ≥ 6.5%</div>
+      <ul><li>Provide A1c pamphlet from shipment</li><li>Offer to all participants at or above 6.5%</li></ul>
+    </div>
+  </div>
+
+  <contact-strip-template></contact-strip-template>
+  <div class="contact-strip">
+    <div>
+      <div class="cs-label">On-call support</div>
+      <div class="cs-num">866.881.7607</div>
+      <div class="cs-desc">QCOK errors · tablet failure · early breakdown requests</div>
+    </div>
+    <div class="cs-badge">24/7 On-Call</div>
+  </div>
+
+  <div class="module-nav">
+    <button class="mn-btn" disabled>← Previous</button>
+    <button class="mn-btn primary" onclick="showModule(1)">Start: Program Overview →</button>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     MODULE 1 — PROGRAM OVERVIEW
+════════════════════════════════════════════════════ -->
+<div class="module" id="mod-1">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--navy)">📋</div>
+    <div>
+      <div class="section-num">Module 01</div>
+      <div class="section-title">Costco Program Overview</div>
+      <div class="section-sub">Identity, services, event flow, and logistics</div>
+    </div>
+  </div>
+
+  <div class="callout critical">
+    <span class="callout-icon">⚠</span>
+    <div class="callout-body">
+      <strong>Identity — critical</strong>
+      Introduce yourself and refer to your team as <strong>Onsite Wellness</strong> screeners at all times. Never identify as US Wellness employees. All participant-facing forms and signage are Onsite Wellness branded.
+    </div>
+  </div>
+
+  <h2 class="sub-heading">Program summary</h2>
+  <p>US Wellness has partnered with Onsite Wellness to deliver Costco's onsite employee health screening program across more than 450 warehouse locations nationwide. All data must be recorded in both the Salesforce tablet and the paper results sheet.</p>
+
+  <h2 class="sub-heading">Services provided</h2>
+  <div class="service-grid">
+    <div class="service-card">
+      <div class="sc-icon">💉</div>
+      <div><div class="sc-name">Fingerstick blood draw</div><div class="sc-desc">Total Cholesterol + HDL</div></div>
+    </div>
+    <div class="service-card">
+      <div class="sc-icon">🩸</div>
+      <div><div class="sc-name">A1c (HbA1c)</div><div class="sc-desc">Bayer A1cNow — all participants</div></div>
+    </div>
+    <div class="service-card">
+      <div class="sc-icon">❤️</div>
+      <div><div class="sc-name">Blood pressure</div><div class="sc-desc">Manual measurement</div></div>
+    </div>
+    <div class="service-card">
+      <div class="sc-icon">📏</div>
+      <div><div class="sc-name">Waist circumference</div><div class="sc-desc">Measured at natural waist</div></div>
+    </div>
+    <div class="service-card">
+      <div class="sc-icon">📊</div>
+      <div><div class="sc-name">Height &amp; Weight</div><div class="sc-desc">Self-reported by participant</div></div>
+    </div>
+    <div class="service-card">
+      <div class="sc-icon">🧮</div>
+      <div><div class="sc-name">BMI</div><div class="sc-desc">Calculated from self-reported values</div></div>
+    </div>
+  </div>
+
+  <h2 class="sub-heading">Event flow</h2>
+  <ol class="step-list">
+    <li class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-content"><strong>Greet participant</strong><div class="step-note">All participants are walk-ins — no pre-populated list exists in Salesforce.</div></div>
+    </li>
+    <li class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-content"><strong>Create appointment in Salesforce</strong><div class="step-note">Locate and open the new appointment.</div></div>
+    </li>
+    <li class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-content"><strong>Digital consent</strong><div class="step-note">Ask participant to complete consent on the tablet.</div></div>
+    </li>
+    <li class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-content"><strong>Screen participant &amp; enter results</strong><div class="step-note">Record all values in Salesforce and on the paper results sheet.</div></div>
+    </li>
+    <li class="step-item">
+      <div class="step-num">5</div>
+      <div class="step-content"><strong>Offer Omada Health info</strong><div class="step-note">If interested, record in Salesforce with preferred email address.</div></div>
+    </li>
+    <li class="step-item">
+      <div class="step-num">6</div>
+      <div class="step-content"><strong>Provide yellow carbon copy</strong><div class="step-note">Participant leaves with the yellow copy. You retain the white copy for USW return.</div></div>
+    </li>
+  </ol>
+
+  <h2 class="sub-heading">Dress code &amp; logistics</h2>
+  <ul class="bullet-list">
+    <li><strong>Dress:</strong> All black — black scrubs or black pants (no leggings), black button-up, sweater, or collared shirt.</li>
+    <li><strong>Parking:</strong> Go to the back door/loading dock. Identify as an "Onsite Wellness" screener. Ask for the site contact. Then park in the main customer lot.</li>
+    <li><strong>Screening room:</strong> Events are set up in the break room. Your site contact will direct you.</li>
+    <li><strong>Privacy screens:</strong> Not provided for Costco events. Ensure adequate spacing between stations.</li>
+    <li><strong>Teardown:</strong> Do not break down until scheduled end time. Bags and boxes (including personal) will be checked at the customer exit.</li>
+  </ul>
+
+  <div class="callout warn">
+    <span class="callout-icon">⚠</span>
+    <div class="callout-body">
+      <strong>Early breakdown</strong>
+      You are contractually obligated to remain set up for the entire scheduled shift. If a site contact asks you to leave early, call 866.881.7607 for permission before breaking down.
+    </div>
+  </div>
+
+  <div class="module-nav">
+    <button class="mn-btn" onclick="showModule(0)">← Quick Reference</button>
+    <button class="mn-btn primary" onclick="showModule(2)">Next: A1c Testing →</button>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     MODULE 2 — A1C TESTING SOP
+════════════════════════════════════════════════════ -->
+<div class="module" id="mod-2">
+  <div class="section-header">
+    <div class="section-icon" style="background:#0f6e56">🩸</div>
+    <div>
+      <div class="section-num">Module 02</div>
+      <div class="section-title">A1c Testing — Bayer A1cNow</div>
+      <div class="section-sub">Equipment, storage, and 12-step standard operating procedure</div>
+    </div>
+  </div>
+
+  <h2 class="sub-heading">What is the A1c test?</h2>
+  <p>The HbA1c result reflects the average blood glucose level over a 2–3 month period, measuring how much glucose has attached to hemoglobin on red blood cells. Because red blood cells have a 120-day lifespan, this provides a reliable long-term average.</p>
+  <ul class="bullet-list">
+    <li><strong>Monitoring:</strong> tracks glucose control in participants already diagnosed with diabetes.</li>
+    <li><strong>Screening:</strong> identifies participants at higher risk for developing diabetes.</li>
+  </ul>
+
+  <div class="callout info">
+    <span class="callout-icon">▶</span>
+    <div class="callout-body">
+      <strong>Required training video</strong>
+      Watch the official A1CNow+ training video at <a href="https://www.ptsdiagnostics.com/a1cnow-training/" target="_blank" rel="noopener" style="color:var(--navy-mid)">ptsdiagnostics.com/a1cnow-training/</a> before your first event. Key chapters: Test Storage (1:49) · Collecting Blood (3:20) · Running the Test (5:27) · Reading Results (6:57).
+    </div>
+  </div>
+
+  <h2 class="sub-heading">Kit contents &amp; storage</h2>
+  <p>Each A1c test kit includes: an <strong>analyzer</strong>, <strong>shaker body</strong>, <strong>blood collector</strong>, and <strong>test cartridge</strong> (in a separate pouch).</p>
+  <ul class="bullet-list">
+    <li>Store refrigerated until expiration, OR at room temperature for up to 4 months.</li>
+    <li>Record the date placed at room temperature on the box.</li>
+    <li>If refrigerated, allow product to reach room temperature for at least <strong>1 hour</strong> before use.</li>
+    <li>Keep out of direct sunlight. Store all components together; use only components from the original box.</li>
+  </ul>
+
+  <h2 class="sub-heading">Standard operating procedure</h2>
+  <p>Complete all 12 steps in order. Do not skip or reorder.</p>
+
+  <ol class="step-list">
+    <li class="step-item"><div class="step-num">1</div><div class="step-content"><strong>Review kit supplies</strong><div class="step-note">Confirm you have the analyzer, shaker body, blood collector, and test cartridge.</div></div></li>
+    <li class="step-item"><div class="step-num">2</div><div class="step-content"><strong>Confirm room temperature &amp; flat surface</strong><div class="step-note">All equipment must be at room temperature before testing.</div></div></li>
+    <li class="step-item"><div class="step-num">3</div><div class="step-content"><strong>Verify lot numbers match</strong><div class="step-alert">The test will error if the analyzer and Pouch 1 lot numbers do not match.</div></div></li>
+    <li class="step-item"><div class="step-num">4</div><div class="step-content"><strong>Open Pouch 1 (sample dilution pouch)</strong><div class="step-alert">DO NOT open Pouch 2 (cartridge) yet.</div></div></li>
+    <li class="step-item"><div class="step-num">5</div><div class="step-content"><strong>Perform fingerstick (USW standards)</strong><div class="step-note">The same puncture site may be used if A1c and cholesterol tests run concurrently.</div></div></li>
+    <li class="step-item"><div class="step-num">6</div><div class="step-content"><strong>Collect blood sample</strong><div class="step-note">Touch the blood drop to fill the blood collector — not too little, not too much.</div></div></li>
+    <li class="step-item"><div class="step-num">7</div><div class="step-content"><strong>Insert blood collector into shaker body &amp; shake 6–8 times</strong><div class="step-note">You should hear an audible click when fully inserted.</div></div></li>
+    <li class="step-item"><div class="step-num">8</div><div class="step-content"><strong>Open Pouch 2 &amp; confirm cartridge/analyzer codes match</strong></div></li>
+    <li class="step-item"><div class="step-num">9</div><div class="step-content"><strong>Insert cartridge → wait for SMPL → dispense sample</strong><div class="step-note">Remove base of shaker body, push down firmly but gently into the analyzer well. Remove the shaker body quickly once sample is dispensed.</div></div></li>
+    <li class="step-item"><div class="step-num">10</div><div class="step-content"><strong>Do not move analyzer — wait ~5 minutes</strong><div class="step-note">A countdown timer will appear. When complete: QCOK → result → remaining test count.</div></div></li>
+    <li class="step-item"><div class="step-num">11</div><div class="step-content"><strong>Record result in Salesforce and on paper results sheet</strong></div></li>
+    <li class="step-item"><div class="step-num">12</div><div class="step-content"><strong>Dispose cartridge in Sharps; save analyzer</strong><div class="step-note">Up to 10 tests per analyzer. After 10, discard analyzer in regular trash.</div></div></li>
+  </ol>
+
+  <div class="callout critical">
+    <span class="callout-icon">🚨</span>
+    <div class="callout-body">
+      <strong>QCOK not displayed?</strong>
+      Do not report the result. Call the on-call team immediately at <strong>866.881.7607</strong>.
+    </div>
+  </div>
+
+  <h2 class="sub-heading">Backup &amp; system failure</h2>
+  <p>If the tablet system fails, move to emergency paper consent forms. You <strong>must</strong> call 866.881.7607 and notify USW before switching to paper consents for Costco events. The Shift Lead must authorize this switch.</p>
+
+  <div class="module-nav">
+    <button class="mn-btn" onclick="showModule(1)">← Program Overview</button>
+    <button class="mn-btn primary" onclick="showModule(3)">Next: Results & Counseling →</button>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     MODULE 3 — RESULTS & COUNSELING
+════════════════════════════════════════════════════ -->
+<div class="module" id="mod-3">
+  <div class="section-header">
+    <div class="section-icon" style="background:#c0392b">📊</div>
+    <div>
+      <div class="section-num">Module 03</div>
+      <div class="section-title">Results &amp; Counseling</div>
+      <div class="section-sub">A1c ranges, counseling principles, and all other screening values</div>
+    </div>
+  </div>
+
+  <h2 class="sub-heading">A1c reference ranges</h2>
+  <div class="range-grid">
+    <div class="range-card normal">
+      <div class="rc-value">≤ 5.6%</div>
+      <div class="rc-label">Normal</div>
+      <div class="rc-action">Encourage healthy habits</div>
+    </div>
+    <div class="range-card pre">
+      <div class="rc-value">5.7 – 6.4%</div>
+      <div class="rc-label">Pre-Diabetes Risk</div>
+      <div class="rc-action">Counsel on lifestyle changes</div>
+    </div>
+    <div class="range-card diabetes">
+      <div class="rc-value">≥ 6.5%</div>
+      <div class="rc-label">Diabetes Range</div>
+      <div class="rc-action">Provide A1c pamphlet · refer to physician</div>
+    </div>
+  </div>
+
+  <div class="callout success">
+    <span class="callout-icon">📄</span>
+    <div class="callout-body">
+      <strong>Elevated A1c pamphlet</strong>
+      For any participant with an A1c of 6.5% or above, provide the informational pamphlet included in your shipment. Do not withhold this resource.
+    </div>
+  </div>
+
+  <h2 class="sub-heading">Counseling principles</h2>
+  <ul class="bullet-list">
+    <li>Adjust to the needs of each participant — not everyone requires the same depth of explanation.</li>
+    <li>Provide an accurate overview of what the result means.</li>
+    <li>Be open to questions and feedback.</li>
+    <li><strong>Do NOT say results out loud</strong> where others can hear — maintain confidentiality at all times.</li>
+    <li>Make it a great experience — participants should feel supported, not alarmed.</li>
+  </ul>
+
+  <h2 class="sub-heading">Healthy blood glucose — counseling points</h2>
+  <ul class="bullet-list">
+    <li>Speak with your doctor and follow their therapy plan, especially if you have a diabetes diagnosis.</li>
+    <li>Make healthy food choices and focus on portion control — the amount you eat directly affects blood glucose.</li>
+    <li>Limit carbohydrates and sugary foods. "Sugar free" does not always mean "carbohydrate free."</li>
+    <li>Most simple carbohydrates come from processed foods — soda, cookies, ice cream, cakes.</li>
+    <li>Try to exercise 30–60 minutes per day, most days of the week (check with a doctor before starting a new program).</li>
+  </ul>
+
+  <h2 class="sub-heading">All screening values — reference table</h2>
+  <table class="data-table">
+    <thead>
+      <tr><th>Measurement</th><th>Goal / Normal</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>HbA1c</td><td class="teal">≤ 5.6%</td><td>Normal; 5.7–6.4% = pre-diabetes risk; ≥6.5% = diabetes range</td></tr>
+      <tr><td>Total Cholesterol</td><td class="teal">&lt; 200 mg/dL</td><td>Fingerstick measurement</td></tr>
+      <tr><td>Triglycerides</td><td class="teal">&lt; 150 mg/dL</td><td>—</td></tr>
+      <tr><td>Blood Pressure</td><td class="teal">&lt; 120/80 mmHg</td><td>Manual measurement; normal range</td></tr>
+      <tr><td>Waist Circumference (F)</td><td class="teal">&lt; 35 inches</td><td>Measure at natural waist above belly button</td></tr>
+      <tr><td>Waist Circumference (M)</td><td class="teal">&lt; 40 inches</td><td>Excess abdominal fat raises risk for T2 diabetes &amp; hypertension</td></tr>
+      <tr><td>BMI</td><td class="teal">18.5 – 24.9</td><td>Calculated from self-reported height/weight; ~5 lbs per BMI point</td></tr>
+      <tr><td>Glucose (fasting)</td><td class="teal">&lt; 100 mg/dL</td><td>—</td></tr>
+      <tr><td>Glucose (non-fasting)</td><td class="teal">&lt; 140 mg/dL</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <div class="module-nav">
+    <button class="mn-btn" onclick="showModule(2)">← A1c Testing</button>
+    <button class="mn-btn primary" onclick="showModule(4)">Next: Paperwork & Return →</button>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     MODULE 4 — PAPERWORK & RETURN
+════════════════════════════════════════════════════ -->
+<div class="module" id="mod-4">
+  <div class="section-header">
+    <div class="section-icon" style="background:#1b3a6b">📁</div>
+    <div>
+      <div class="section-num">Module 04</div>
+      <div class="section-title">Paperwork &amp; Data Return</div>
+      <div class="section-sub">Results form handling, data cover sheet, and UPS return procedure</div>
+    </div>
+  </div>
+
+  <h2 class="sub-heading">Results form guidelines</h2>
+  <ul class="bullet-list">
+    <li>All results forms are two-ply carbon copies: <strong>participant receives the yellow copy</strong>; the white top sheet is returned to USW.</li>
+    <li>The participant's name must be clearly written in the designated area at the bottom of every form.</li>
+    <li>The screener's (provider's) name must be clearly written in the designated area at the bottom of every form.</li>
+  </ul>
+
+  <div class="callout info">
+    <span class="callout-icon">ℹ</span>
+    <div class="callout-body">
+      <strong>Data cover sheet</strong>
+      Completed by the Shift Lead after each shift. Must be returned with all paperwork from every event. This sheet helps identify any participant records missing from tablet data entry.
+    </div>
+  </div>
+
+  <h2 class="sub-heading">Paperwork return — step by step</h2>
+  <ol class="step-list">
+    <li class="step-item"><div class="step-num">1</div><div class="step-content"><strong>Collect all white results sheets</strong><div class="step-note">Place completed white copies into the clear reusable pocket folder.</div></div></li>
+    <li class="step-item"><div class="step-num">2</div><div class="step-content"><strong>Add the Data Cover Sheet</strong></div></li>
+    <li class="step-item"><div class="step-num">3</div><div class="step-content"><strong>Add emergency consent forms (if used)</strong></div></li>
+    <li class="step-item"><div class="step-num">4</div><div class="step-content"><strong>Secure folder &amp; place in return supply box</strong><div class="step-note">Secure the string on the folder, then place inside the return supply shipment box.</div></div></li>
+    <li class="step-item"><div class="step-num">5</div><div class="step-content"><strong>Drop off at a manned UPS location</strong><div class="step-note">Drop off within the timeframe provided by your manager. Obtain a receipt with tracking number.</div></div></li>
+    <li class="step-item"><div class="step-num">6</div><div class="step-content"><strong>Submit UPS receipt to your Field Operations Manager</strong><div class="step-note">Include the tracking number in your submission.</div></div></li>
+  </ol>
+
+  <div class="callout warn">
+    <span class="callout-icon">📋</span>
+    <div class="callout-body">
+      <strong>Multi-event leads</strong>
+      If you are working multiple events as Shift Lead, separate each day's paperwork and Data Cover Sheet into its own clear pocket folder. Place all folders in the return supply box and return as directed by your manager.
+    </div>
+  </div>
+
+  <h2 class="sub-heading">Quick-reference checklist</h2>
+  <table class="data-table">
+    <thead><tr><th>Item</th><th>Who keeps it</th><th>How returned</th></tr></thead>
+    <tbody>
+      <tr><td>White results sheet (top ply)</td><td>USW / Screener</td><td>In clear folder → return supply box → UPS</td></tr>
+      <tr><td>Yellow results sheet (carbon copy)</td><td>Participant</td><td>Given to participant at end of screening</td></tr>
+      <tr><td>Data Cover Sheet</td><td>Shift Lead completes</td><td>In clear folder → return supply box → UPS</td></tr>
+      <tr><td>Emergency consent forms (if used)</td><td>Shift Lead</td><td>In clear folder → return supply box → UPS</td></tr>
+    </tbody>
+  </table>
+
+  <div class="module-nav">
+    <button class="mn-btn" onclick="showModule(3)">← Results &amp; Counseling</button>
+    <button class="mn-btn primary" onclick="showModule(5)">Next: Knowledge Checks →</button>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     MODULE 5 — KNOWLEDGE CHECKS
+════════════════════════════════════════════════════ -->
+<div class="module" id="mod-5">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--red)">✎</div>
+    <div>
+      <div class="section-num">Module 05</div>
+      <div class="section-title">Knowledge Checks</div>
+      <div class="section-sub">Answer all 12 questions correctly to earn your certificate</div>
+    </div>
+  </div>
+
+  <!-- OVERALL PROGRESS TRACKER -->
+  <div id="overall-progress" style="background:var(--navy);border-radius:14px;padding:20px 24px;margin-bottom:24px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+      <span style="font-size:13px;font-weight:600;color:#fff;">Overall Progress</span>
+      <span style="font-size:13px;font-family:var(--mono);color:#8fa8c8;" id="overall-score-label">0 / 12 correct</span>
+    </div>
+    <div style="display:flex;gap:6px;margin-bottom:14px;" id="q-pip-row">
+      <!-- 12 pips injected by JS -->
+    </div>
+    <div style="height:6px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;">
+      <div id="overall-prog-bar" style="height:100%;width:0%;background:var(--teal-light);border-radius:3px;transition:width 0.4s ease;"></div>
+    </div>
+    <div style="margin-top:12px;font-size:12px;color:#5a7a9e;">Answer every question correctly to unlock your certificate. Incorrect answers can be retried individually.</div>
+  </div>
+
+  <!-- QUIZ 1: Program Overview -->
+  <div class="quiz-section" id="quiz-1">
+    <div class="quiz-header">
+      <span class="quiz-title">Quiz 1 · Program Overview</span>
+      <span class="quiz-badge" id="q1-score">0 / 3 correct</span>
+    </div>
+
+    <div class="question-block" id="qblock-1-1">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <span class="q-status-dot" id="qdot-1-1"></span>
+        <div class="q-text" style="margin-bottom:0;">1. When greeting participants at a Costco event, how should you identify yourself and your team?</div>
+      </div>
+      <div class="options" id="q1-q1">
+        <button class="option-btn" onclick="answer(1,1,0,false)"><span class="opt-letter">A</span>As US Wellness health screeners</button>
+        <button class="option-btn" onclick="answer(1,1,1,true)"><span class="opt-letter">B</span>As Onsite Wellness screeners</button>
+        <button class="option-btn" onclick="answer(1,1,2,false)"><span class="opt-letter">C</span>As Costco health professionals</button>
+        <button class="option-btn" onclick="answer(1,1,3,false)"><span class="opt-letter">D</span>As USW field staff</button>
+      </div>
+      <div class="q-feedback" id="qfb-1-1"></div>
+    </div>
+
+    <div class="question-block" id="qblock-1-2">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <span class="q-status-dot" id="qdot-1-2"></span>
+        <div class="q-text" style="margin-bottom:0;">2. Height and weight measurements at Costco events are obtained by:</div>
+      </div>
+      <div class="options" id="q1-q2">
+        <button class="option-btn" onclick="answer(1,2,0,false)"><span class="opt-letter">A</span>Screener using a scale and stadiometer from the shipment</button>
+        <button class="option-btn" onclick="answer(1,2,1,false)"><span class="opt-letter">B</span>Asking the site contact to provide a scale</button>
+        <button class="option-btn" onclick="answer(1,2,2,true)"><span class="opt-letter">C</span>Self-report by the participant (no scale or stadiometer provided)</button>
+        <button class="option-btn" onclick="answer(1,2,3,false)"><span class="opt-letter">D</span>Using a BMI chart only</button>
+      </div>
+      <div class="q-feedback" id="qfb-1-2"></div>
+    </div>
+
+    <div class="question-block" id="qblock-1-3">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <span class="q-status-dot" id="qdot-1-3"></span>
+        <div class="q-text" style="margin-bottom:0;">3. What should you do if a Costco site contact asks you to break down early?</div>
+      </div>
+      <div class="options" id="q1-q3">
+        <button class="option-btn" onclick="answer(1,3,0,false)"><span class="opt-letter">A</span>Begin breaking down if the request seems reasonable</button>
+        <button class="option-btn" onclick="answer(1,3,1,true)"><span class="opt-letter">B</span>Call 866.881.7607 for USW permission before breaking down</button>
+        <button class="option-btn" onclick="answer(1,3,2,false)"><span class="opt-letter">C</span>Follow the site contact's instructions immediately</button>
+        <button class="option-btn" onclick="answer(1,3,3,false)"><span class="opt-letter">D</span>Leave at your discretion if 30 minutes remain</button>
+      </div>
+      <div class="q-feedback" id="qfb-1-3"></div>
+    </div>
+  </div>
+
+  <!-- QUIZ 2: A1c Testing -->
+  <div class="quiz-section" id="quiz-2" style="margin-top:20px;">
+    <div class="quiz-header">
+      <span class="quiz-title">Quiz 2 · A1c Testing</span>
+      <span class="quiz-badge" id="q2-score">0 / 3 correct</span>
+    </div>
+
+    <div class="question-block" id="qblock-2-1">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <span class="q-status-dot" id="qdot-2-1"></span>
+        <div class="q-text" style="margin-bottom:0;">1. What happens if the lot numbers on the analyzer and Pouch 1 do not match?</div>
+      </div>
+      <div class="options" id="q2-q1">
+        <button class="option-btn" onclick="answer(2,1,0,false)"><span class="opt-letter">A</span>The result is slightly less accurate but still usable</button>
+        <button class="option-btn" onclick="answer(2,1,1,true)"><span class="opt-letter">B</span>The test will error and cannot proceed</button>
+        <button class="option-btn" onclick="answer(2,1,2,false)"><span class="opt-letter">C</span>Only proceed if the difference is less than 1 lot number</button>
+        <button class="option-btn" onclick="answer(2,1,3,false)"><span class="opt-letter">D</span>Nothing — lot numbers are informational only</button>
+      </div>
+      <div class="q-feedback" id="qfb-2-1"></div>
+    </div>
+
+    <div class="question-block" id="qblock-2-2">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <span class="q-status-dot" id="qdot-2-2"></span>
+        <div class="q-text" style="margin-bottom:0;">2. After dispensing the sample, you see a countdown timer appear. What should you do?</div>
+      </div>
+      <div class="options" id="q2-q2">
+        <button class="option-btn" onclick="answer(2,2,0,false)"><span class="opt-letter">A</span>Gently rotate the analyzer to improve mixing</button>
+        <button class="option-btn" onclick="answer(2,2,1,false)"><span class="opt-letter">B</span>Pick up the analyzer and hold it level</button>
+        <button class="option-btn" onclick="answer(2,2,2,true)"><span class="opt-letter">C</span>Do not move or handle the analyzer until the test is complete</button>
+        <button class="option-btn" onclick="answer(2,2,3,false)"><span class="opt-letter">D</span>Open Pouch 2 for the next participant immediately</button>
+      </div>
+      <div class="q-feedback" id="qfb-2-2"></div>
+    </div>
+
+    <div class="question-block" id="qblock-2-3">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <span class="q-status-dot" id="qdot-2-3"></span>
+        <div class="q-text" style="margin-bottom:0;">3. What is the correct next step after the A1c result is displayed on the A1c analyzer?</div>
+      </div>
+      <div class="options" id="q2-q3">
+        <button class="option-btn" onclick="answer(2,3,0,false)"><span class="opt-letter">A</span>Enter the test result into Salesforce (paper backup if necessary).</button>
+        <button class="option-btn" onclick="answer(2,3,1,false)"><span class="opt-letter">B</span>Show the result to the participant (do not say results out loud).</button>
+        <button class="option-btn" onclick="answer(2,3,2,false)"><span class="opt-letter">C</span>Use counseling script to educate participant about what their results mean related to their health and next steps to take.</button>
+        <button class="option-btn" onclick="answer(2,3,3,true)"><span class="opt-letter">D</span>All of the above.</button>
+      </div>
+      <div class="q-feedback" id="qfb-2-3"></div>
+    </div>
+  </div>
+
+  <!-- QUIZ 3: Results -->
+  <div class="quiz-section" id="quiz-3" style="margin-top:20px;">
+    <div class="quiz-header">
+      <span class="quiz-title">Quiz 3 · Results &amp; Counseling</span>
+      <span class="quiz-badge" id="q3-score">0 / 3 correct</span>
+    </div>
+
+    <div class="question-block" id="qblock-3-1">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <span class="q-status-dot" id="qdot-3-1"></span>
+        <div class="q-text" style="margin-bottom:0;">1. A participant's A1c result is 6.7%. What should you do?</div>
+      </div>
+      <div class="options" id="q3-q1">
+        <button class="option-btn" onclick="answer(3,1,0,false)"><span class="opt-letter">A</span>Simply record the result; no additional action needed</button>
+        <button class="option-btn" onclick="answer(3,1,1,true)"><span class="opt-letter">B</span>Provide the A1c informational pamphlet and encourage a physician visit</button>
+        <button class="option-btn" onclick="answer(3,1,2,false)"><span class="opt-letter">C</span>Tell the participant they have diabetes</button>
+        <button class="option-btn" onclick="answer(3,1,3,false)"><span class="opt-letter">D</span>Retest with a new cartridge to confirm</button>
+      </div>
+      <div class="q-feedback" id="qfb-3-1"></div>
+    </div>
+
+    <div class="question-block" id="qblock-3-2">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <span class="q-status-dot" id="qdot-3-2"></span>
+        <div class="q-text" style="margin-bottom:0;">2. An A1c value in the range of 5.7–6.4% is classified as:</div>
+      </div>
+      <div class="options" id="q3-q2">
+        <button class="option-btn" onclick="answer(3,2,0,false)"><span class="opt-letter">A</span>Normal — no action needed</button>
+        <button class="option-btn" onclick="answer(3,2,1,true)"><span class="opt-letter">B</span>Pre-diabetes risk — lifestyle counseling recommended</button>
+        <button class="option-btn" onclick="answer(3,2,2,false)"><span class="opt-letter">C</span>Diabetes range — immediate medical referral required</button>
+        <button class="option-btn" onclick="answer(3,2,3,false)"><span class="opt-letter">D</span>Inconclusive — retest required</button>
+      </div>
+      <div class="q-feedback" id="qfb-3-2"></div>
+    </div>
+
+    <div class="question-block" id="qblock-3-3">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <span class="q-status-dot" id="qdot-3-3"></span>
+        <div class="q-text" style="margin-bottom:0;">3. When reviewing a result with a participant near other people, you should:</div>
+      </div>
+      <div class="options" id="q3-q3">
+        <button class="option-btn" onclick="answer(3,3,0,true)"><span class="opt-letter">A</span>Show the result on the paper form without reading it aloud</button>
+        <button class="option-btn" onclick="answer(3,3,1,false)"><span class="opt-letter">B</span>Speak in a normal voice — it's public health information</button>
+        <button class="option-btn" onclick="answer(3,3,2,false)"><span class="opt-letter">C</span>Ask the participant to move to a private area of the break room if available</button>
+        <button class="option-btn" onclick="answer(3,3,3,false)"><span class="opt-letter">D</span>Write the result on a sticky note and hand it over</button>
+      </div>
+      <div class="q-feedback" id="qfb-3-3"></div>
+    </div>
+  </div>
+
+  <!-- QUIZ 4: Paperwork -->
+  <div class="quiz-section" id="quiz-4" style="margin-top:20px;">
+    <div class="quiz-header">
+      <span class="quiz-title">Quiz 4 · Paperwork &amp; Return</span>
+      <span class="quiz-badge" id="q4-score">0 / 3 correct</span>
+    </div>
+
+    <div class="question-block" id="qblock-4-1">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <span class="q-status-dot" id="qdot-4-1"></span>
+        <div class="q-text" style="margin-bottom:0;">1. Results forms are two-ply carbon copies. Who receives which copy?</div>
+      </div>
+      <div class="options" id="q4-q1">
+        <button class="option-btn" onclick="answer(4,1,0,false)"><span class="opt-letter">A</span>Participant gets the white copy; screener keeps the yellow copy</button>
+        <button class="option-btn" onclick="answer(4,1,1,true)"><span class="opt-letter">B</span>Participant gets the yellow copy; white copy is returned to USW</button>
+        <button class="option-btn" onclick="answer(4,1,2,false)"><span class="opt-letter">C</span>Both copies go to USW; participant gets a digital version</button>
+        <button class="option-btn" onclick="answer(4,1,3,false)"><span class="opt-letter">D</span>Screener keeps both until the weekly debrief</button>
+      </div>
+      <div class="q-feedback" id="qfb-4-1"></div>
+    </div>
+
+    <div class="question-block" id="qblock-4-2">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <span class="q-status-dot" id="qdot-4-2"></span>
+        <div class="q-text" style="margin-bottom:0;">2. After the event, where do you drop off the completed paperwork return box?</div>
+      </div>
+      <div class="options" id="q4-q2">
+        <button class="option-btn" onclick="answer(4,2,0,false)"><span class="opt-letter">A</span>Any drop box or kiosk at any courier</button>
+        <button class="option-btn" onclick="answer(4,2,1,true)"><span class="opt-letter">B</span>A manned UPS location, obtaining a receipt with tracking number</button>
+        <button class="option-btn" onclick="answer(4,2,2,false)"><span class="opt-letter">C</span>The Costco warehouse manager's office</button>
+        <button class="option-btn" onclick="answer(4,2,3,false)"><span class="opt-letter">D</span>Mail it using the US Postal Service</button>
+      </div>
+      <div class="q-feedback" id="qfb-4-2"></div>
+    </div>
+
+    <div class="question-block" id="qblock-4-3">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <span class="q-status-dot" id="qdot-4-3"></span>
+        <div class="q-text" style="margin-bottom:0;">3. If you work multiple events as Shift Lead, how should you organize the paperwork return?</div>
+      </div>
+      <div class="options" id="q4-q3">
+        <button class="option-btn" onclick="answer(4,3,0,false)"><span class="opt-letter">A</span>Combine all days' paperwork into a single clear folder</button>
+        <button class="option-btn" onclick="answer(4,3,1,true)"><span class="opt-letter">B</span>Separate each day's paperwork and data cover sheet into its own clear folder</button>
+        <button class="option-btn" onclick="answer(4,3,2,false)"><span class="opt-letter">C</span>Return each day's paperwork separately on different days</button>
+        <button class="option-btn" onclick="answer(4,3,3,false)"><span class="opt-letter">D</span>Only the final event's paperwork needs to be returned</button>
+      </div>
+      <div class="q-feedback" id="qfb-4-3"></div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATE UNLOCK (injected by JS when all 12 correct) -->
+  <div id="cert-unlock-zone"></div>
+
+  <div class="module-nav">
+    <button class="mn-btn" onclick="showModule(4)">← Paperwork &amp; Return</button>
+    <button class="mn-btn primary" onclick="showModule(0)">Back to Quick Reference ↩</button>
+  </div>
+</div>
+
+</main>
+</div>
+
+<!-- NAME CAPTURE MODAL -->
+<div class="modal-overlay open" id="name-modal" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
+  <div class="modal-box">
+    <div class="modal-icon">👋</div>
+    <div class="modal-title" id="modal-heading">Welcome, Screener</div>
+    <div class="modal-sub">Enter your name to personalize your certificates of completion. Your name will appear on each certificate when you ace a quiz.</div>
+    <input class="modal-input" id="screener-name" type="text" placeholder="First and Last Name" maxlength="60" autocomplete="name" />
+    <button class="modal-submit" id="modal-submit-btn" onclick="submitName()" disabled>Begin Training →</button>
+  </div>
+</div>
+
+<!-- CERTIFICATE OVERLAY -->
+<div class="cert-overlay" id="cert-overlay" role="dialog" aria-modal="true" aria-label="Certificate of Completion">
+  <div class="cert-wrapper">
+    <div class="cert-canvas-wrap"><canvas id="cert-canvas" width="1400" height="980"></canvas></div>
+    <div class="cert-actions">
+      <button class="cert-btn primary" onclick="downloadCert()">⬇ Download Certificate</button>
+      <button class="cert-btn ghost" onclick="closeCert()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════════════ */
+const MODULES = 5;
+const TOTAL_QS = 12;
+let currentModule = 0;
+const completed = new Set();
+let screenerName = '';
+let currentCertTitle = 'Full_Programme';
+let certEarned = false;
+
+/* question state: keyed by "quiz-question" e.g. "1-2"
+   values: 'unanswered' | 'correct' | 'wrong' */
+const qState = {};
+for (let q = 1; q <= 4; q++)
+  for (let n = 1; n <= 3; n++)
+    qState[q + '-' + n] = 'unanswered';
+
+/* ═══════════════════════════════════════════════════
+   INIT — build pip row
+═══════════════════════════════════════════════════ */
+window.addEventListener('DOMContentLoaded', () => {
+  const pipRow = document.getElementById('q-pip-row');
+  let pip_q = 0;
+  for (let q = 1; q <= 4; q++) {
+    for (let n = 1; n <= 3; n++) {
+      pip_q++;
+      const pip = document.createElement('span');
+      pip.className = 'q-pip';
+      pip.id = 'pip-' + q + '-' + n;
+      pip.title = 'Quiz ' + q + ', Q' + n;
+      pipRow.appendChild(pip);
+    }
+    if (q < 4) {
+      const sep = document.createElement('span');
+      sep.style.cssText = 'width:1px;height:18px;background:rgba(255,255,255,0.12);margin:0 2px;flex-shrink:0;';
+      pipRow.appendChild(sep);
+    }
+  }
+});
+
+/* ═══════════════════════════════════════════════════
+   NAME MODAL
+═══════════════════════════════════════════════════ */
+const nameInput = document.getElementById('screener-name');
+const submitBtn = document.getElementById('modal-submit-btn');
+nameInput.addEventListener('input', () => {
+  submitBtn.disabled = nameInput.value.trim().length < 2;
+});
+nameInput.addEventListener('keydown', e => { if (e.key === 'Enter') submitName(); });
+
+function submitName() {
+  const val = nameInput.value.trim();
+  if (val.length < 2) return;
+  screenerName = val;
+  document.getElementById('name-modal').classList.remove('open');
+}
+
+/* ═══════════════════════════════════════════════════
+   MODULE NAV
+═══════════════════════════════════════════════════ */
+function showModule(n) {
+  document.querySelectorAll('.module').forEach(m => m.classList.remove('active'));
+  document.getElementById('mod-' + n).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach((item, i) => {
+    item.classList.remove('active');
+    if (i === n) item.classList.add('active');
+  });
+  currentModule = n;
+  if (n > 0) completed.add(n);
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (window.innerWidth < 900) document.getElementById('sidebar').classList.remove('open');
+}
+
+function updateProgress() {
+  const done = completed.size;
+  const pct = Math.round((done / MODULES) * 100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-label').textContent = done + ' of ' + MODULES + ' complete';
+  for (let i = 1; i <= MODULES; i++) {
+    const nav = document.getElementById('nav-' + i);
+    if (nav) nav.classList.toggle('done', completed.has(i));
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   ANSWER HANDLER — question-level retry
+═══════════════════════════════════════════════════ */
+function answer(quiz, question, chosenIdx, isCorrect) {
+  const key = quiz + '-' + question;
+  if (qState[key] === 'correct') return; // already locked correct
+
+  const optionsEl = document.getElementById('q' + quiz + '-q' + question);
+  const btns = optionsEl.querySelectorAll('.option-btn');
+  const feedbackEl = document.getElementById('qfb-' + quiz + '-' + question);
+  const dotEl = document.getElementById('qdot-' + quiz + '-' + question);
+  const pipEl = document.getElementById('pip-' + quiz + '-' + question);
+
+  // Lock the chosen button immediately
+  btns.forEach(b => b.disabled = true);
+  const chosenBtn = btns[chosenIdx];
+
+  if (isCorrect) {
+    /* ── CORRECT ── */
+    qState[key] = 'correct';
+    chosenBtn.classList.add('correct');
+    dotEl.className = 'q-status-dot correct';
+    pipEl.className = 'q-pip correct';
+    pipEl.textContent = '✓';
+    feedbackEl.className = 'q-feedback correct';
+    feedbackEl.textContent = '✓ Correct!';
+
+    // Lock wrong-labelled buttons permanently as neutral disabled
+    btns.forEach((b, i) => { if (i !== chosenIdx) b.classList.add('locked-neutral'); });
+
+    updateOverall();
+    updateQuizScore(quiz);
+    checkAllCorrect();
+
+  } else {
+    /* ── WRONG ── */
+    qState[key] = 'wrong';
+    chosenBtn.classList.add('wrong');
+    dotEl.className = 'q-status-dot wrong';
+    pipEl.className = 'q-pip wrong';
+    feedbackEl.className = 'q-feedback wrong';
+    feedbackEl.textContent = '✗ Incorrect — review the module content and try again.';
+
+    // Re-enable every button EXCEPT the one just chosen wrongly
+    // (after a short delay so user sees the red flash)
+    setTimeout(() => {
+      btns.forEach((b, i) => {
+        if (i !== chosenIdx) {
+          b.disabled = false;
+          b.classList.remove('wrong');
+        }
+      });
+      // Keep chosen button red & disabled
+      chosenBtn.disabled = true;
+    }, 820);
+
+    updateQuizScore(quiz);
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   SCORE HELPERS
+═══════════════════════════════════════════════════ */
+function updateOverall() {
+  const correctCount = Object.values(qState).filter(v => v === 'correct').length;
+  document.getElementById('overall-score-label').textContent = correctCount + ' / 12 correct';
+  const pct = Math.round((correctCount / TOTAL_QS) * 100);
+  document.getElementById('overall-prog-bar').style.width = pct + '%';
+}
+
+function updateQuizScore(quiz) {
+  let correct = 0;
+  for (let n = 1; n <= 3; n++) {
+    if (qState[quiz + '-' + n] === 'correct') correct++;
+  }
+  document.getElementById('q' + quiz + '-score').textContent = correct + ' / 3 correct';
+}
+
+/* ═══════════════════════════════════════════════════
+   ALL 12 CORRECT → UNLOCK CERTIFICATE
+═══════════════════════════════════════════════════ */
+function checkAllCorrect() {
+  if (certEarned) return;
+  const allDone = Object.values(qState).every(v => v === 'correct');
+  if (!allDone) return;
+
+  certEarned = true;
+
+  // Update overall tracker bar to gold
+  document.getElementById('overall-prog-bar').style.background = '#f39c12';
+
+  // Inject the unlock banner
+  const zone = document.getElementById('cert-unlock-zone');
+  zone.innerHTML = `
+    <div id="cert-unlock-banner" style="
+      margin-top:28px;
+      background:var(--navy);
+      border:2px solid #f39c12;
+      border-radius:16px;
+      padding:32px 28px;
+      text-align:center;
+      animation: fadeSlideUp 0.5s ease forwards;
+    ">
+      <div style="font-size:48px;margin-bottom:12px;">🏅</div>
+      <div style="font-size:20px;font-weight:600;color:#fff;margin-bottom:6px;">All 12 Questions Correct!</div>
+      <div style="font-size:14px;color:#7fa2cc;margin-bottom:24px;max-width:420px;margin-left:auto;margin-right:auto;line-height:1.6;">
+        You've demonstrated mastery across all four training modules.
+        Your certificate of completion is ready.
+      </div>
+      <button class="q-btn primary" style="font-size:15px;padding:13px 32px;border-radius:10px;background:#f39c12;border-color:#f39c12;color:#0d2340;font-weight:700;" onclick="showCertificate()">
+        🎓 View Certificate of Completion
+      </button>
+    </div>`;
+
+  // Inject keyframe once
+  if (!document.getElementById('cert-kf')) {
+    const s = document.createElement('style');
+    s.id = 'cert-kf';
+    s.textContent = '@keyframes fadeSlideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}';
+    document.head.appendChild(s);
+  }
+
+  setTimeout(() => zone.scrollIntoView({ behavior: 'smooth', block: 'center' }), 300);
+}
+
+/* ═══════════════════════════════════════════════════
+   CERTIFICATE DRAWING
+═══════════════════════════════════════════════════ */
+function showCertificate() {
+  const canvas = document.getElementById('cert-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = 1400, H = 980;
+  canvas.width = W; canvas.height = H;
+
+  const dateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  /* ── background ── */
+  ctx.fillStyle = '#0d2340';
+  ctx.fillRect(0, 0, W, H);
+
+  /* ── diagonal stripe texture ── */
+  ctx.save();
+  ctx.globalAlpha = 0.035;
+  ctx.strokeStyle = '#ffffff';
+  ctx.lineWidth = 1;
+  for (let x = -H; x < W + H; x += 30) {
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + H, H); ctx.stroke();
+  }
+  ctx.restore();
+
+  /* ── warm glow top-left ── */
+  const gc1 = ctx.createRadialGradient(240, 220, 0, 240, 220, 380);
+  gc1.addColorStop(0, 'rgba(243,156,18,0.1)');
+  gc1.addColorStop(1, 'transparent');
+  ctx.fillStyle = gc1; ctx.fillRect(0, 0, W, H);
+
+  /* ── cool glow bottom-right ── */
+  const gc2 = ctx.createRadialGradient(W - 220, H - 200, 0, W - 220, H - 200, 340);
+  gc2.addColorStop(0, 'rgba(26,58,107,0.55)');
+  gc2.addColorStop(1, 'transparent');
+  ctx.fillStyle = gc2; ctx.fillRect(0, 0, W, H);
+
+  /* ── outer gold border ── */
+  const M = 38;
+  roundRect(ctx, M, M, W - M * 2, H - M * 2, 22);
+  ctx.strokeStyle = '#f39c12';
+  ctx.lineWidth = 2.5;
+  ctx.stroke();
+
+  /* ── inner border ── */
+  roundRect(ctx, M + 11, M + 11, W - (M + 11) * 2, H - (M + 11) * 2, 15);
+  ctx.strokeStyle = 'rgba(243,156,18,0.18)';
+  ctx.lineWidth = 1;
+  ctx.stroke();
+
+  /* ── top & bottom red bars ── */
+  ctx.fillStyle = '#c0392b';
+  ctx.fillRect(M + 64, M - 3, W - (M + 64) * 2, 7);
+  ctx.fillRect(M + 64, H - M - 4, W - (M + 64) * 2, 7);
+
+  /* ── decorative corner marks ── */
+  [[M + 30, M + 30], [W - M - 30, M + 30], [M + 30, H - M - 30], [W - M - 30, H - M - 30]].forEach(([cx, cy]) => {
+    ctx.strokeStyle = 'rgba(243,156,18,0.35)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(cx - 14, cy); ctx.lineTo(cx, cy); ctx.lineTo(cx, cy - 14); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(cx + 14, cy); ctx.lineTo(cx, cy); ctx.lineTo(cx, cy + 14); ctx.stroke();
+  });
+
+  /* ── seal ── */
+  const sx = W / 2, sy = 196;
+  ctx.beginPath(); ctx.arc(sx, sy, 80, 0, Math.PI * 2);
+  ctx.fillStyle = 'rgba(243,156,18,0.12)'; ctx.fill();
+  ctx.strokeStyle = '#f39c12'; ctx.lineWidth = 2.5; ctx.stroke();
+  ctx.beginPath(); ctx.arc(sx, sy, 60, 0, Math.PI * 2);
+  ctx.strokeStyle = 'rgba(243,156,18,0.35)'; ctx.lineWidth = 1; ctx.stroke();
+  ctx.font = '56px serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText('🏅', sx, sy + 2);
+
+  /* ── "CERTIFICATE OF COMPLETION" ── */
+  ctx.font = '700 14px DM Sans, sans-serif';
+  ctx.fillStyle = '#f39c12';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText('C E R T I F I C A T E   O F   C O M P L E T I O N', sx, 322);
+
+  /* ── rule ── */
+  const rw = 280;
+  ctx.strokeStyle = 'rgba(243,156,18,0.35)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(sx - rw, 338); ctx.lineTo(sx + rw, 338); ctx.stroke();
+
+  /* ── "This certifies that" ── */
+  ctx.font = '300 18px DM Sans, sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.42)';
+  ctx.fillText('This certifies that', sx, 380);
+
+  /* ── NAME ── */
+  const name = screenerName || 'Onsite Wellness Screener';
+  let fSize = 54;
+  ctx.font = '600 ' + fSize + 'px DM Sans, sans-serif';
+  while (ctx.measureText(name).width > W - 220 && fSize > 28) {
+    fSize -= 2;
+    ctx.font = '600 ' + fSize + 'px DM Sans, sans-serif';
+  }
+  ctx.fillStyle = '#ffffff';
+  ctx.fillText(name, sx, 456);
+
+  /* ── name underline ── */
+  const nw = Math.min(ctx.measureText(name).width + 80, W - 180);
+  ctx.strokeStyle = 'rgba(255,255,255,0.12)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(sx - nw / 2, 472); ctx.lineTo(sx + nw / 2, 472); ctx.stroke();
+
+  /* ── "has successfully completed all knowledge checks for" ── */
+  ctx.font = '300 17px DM Sans, sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.42)';
+  ctx.fillText('has successfully completed all knowledge checks for', sx, 512);
+
+  /* ── Programme title ── */
+  ctx.font = '600 30px DM Sans, sans-serif';
+  ctx.fillStyle = '#ffffff';
+  ctx.fillText('Costco Employee Health Screening', sx, 562);
+
+  ctx.font = '400 18px DM Sans, sans-serif';
+  ctx.fillStyle = '#f5c842';
+  ctx.fillText('Full Training Programme  ·  All Four Modules  ·  12 / 12 Questions Correct', sx, 598);
+
+  /* ── 4 quiz badge row ── */
+  const quizNames = ['Program Overview', 'A1c Testing', 'Results & Counseling', 'Paperwork & Return'];
+  const bw = 274, bh = 44, bGap = 14;
+  const totalBW = quizNames.length * bw + (quizNames.length - 1) * bGap;
+  const bStartX = sx - totalBW / 2;
+  quizNames.forEach((qn, i) => {
+    const bx = bStartX + i * (bw + bGap);
+    roundRect(ctx, bx, 634, bw, bh, 10);
+    ctx.fillStyle = 'rgba(243,156,18,0.12)'; ctx.fill();
+    ctx.strokeStyle = 'rgba(243,156,18,0.5)'; ctx.lineWidth = 1; ctx.stroke();
+    ctx.font = '500 12px DM Sans, sans-serif';
+    ctx.fillStyle = '#f5c842';
+    ctx.fillText('Quiz ' + (i + 1) + '  ·  ' + qn + '  ·  3/3', bx + bw / 2, 634 + bh / 2 + 5);
+  });
+
+  /* ── horizontal divider ── */
+  const dy = 712;
+  ctx.strokeStyle = 'rgba(255,255,255,0.07)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(M + 80, dy); ctx.lineTo(W - M - 80, dy); ctx.stroke();
+
+  /* ── footer ── */
+  const fy = dy + 50;
+  ctx.textAlign = 'left';
+  ctx.font = '600 13px DM Sans, sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.55)';
+  ctx.fillText('ONSITE WELLNESS', M + 80, fy);
+  ctx.font = '300 11px DM Sans, sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.28)';
+  ctx.fillText('Powered by US Wellness', M + 80, fy + 20);
+
+  ctx.textAlign = 'center';
+  ctx.font = '300 12px DM Mono, monospace';
+  ctx.fillStyle = 'rgba(255,255,255,0.32)';
+  ctx.fillText('Issued: ' + dateStr, sx, fy + 10);
+
+  ctx.textAlign = 'right';
+  ctx.font = '600 13px DM Sans, sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.55)';
+  ctx.fillText('COSTCO HEALTH SCREENING', W - M - 80, fy);
+  ctx.font = '300 11px DM Sans, sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.28)';
+  ctx.fillText('Employee Wellness Programme', W - M - 80, fy + 20);
+
+  document.getElementById('cert-overlay').classList.add('open');
+}
+
+/* ── rounded rect helper ── */
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+function closeCert() {
+  document.getElementById('cert-overlay').classList.remove('open');
+}
+
+function downloadCert() {
+  const canvas = document.getElementById('cert-canvas');
+  const link = document.createElement('a');
+  link.download = 'Certificate_Costco_Screening_' + (screenerName || 'Screener').replace(/\s+/g, '_') + '.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+document.getElementById('cert-overlay').addEventListener('click', function (e) {
+  if (e.target === this) closeCert();
+});
+
+/* ═══════════════════════════════════════════════════
+   SIDEBAR
+═══════════════════════════════════════════════════ */
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+document.addEventListener('click', function (e) {
+  if (window.innerWidth < 900) {
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar.classList.contains('open') && !sidebar.contains(e.target) && !e.target.closest('.menu-btn')) {
+      sidebar.classList.remove('open');
+    }
+  }
+});
+</script>
+</body>
+</html>
